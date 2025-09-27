@@ -9,9 +9,10 @@ var items = [
 		"icon": preload("res://icon.svg")
 	},
 	{
-		"name": "Fly!2",
-		"desc": "Gain the ability to fly for 10 seconds",
-		"price": 50,
+		"name": "Jump Potion",
+		"desc": "Jump higher for 30 seconds!",
+		"price": 67,
+		"on_buy": Callable(Global, "set_norm_jump_boost").bind(true, 30),
 		"icon": preload("res://icon.svg")
 	},
 	{
@@ -68,6 +69,9 @@ func _on_buy_pressed(slot: VBoxContainer, item: Dictionary) -> void:
 		var anim_player: AnimationPlayer = slot.get_node("AnimationPlayer")
 		anim_player.play("fade_out")
 		anim_player.animation_finished.connect(_on_slide_finished.bind(slot), CONNECT_ONE_SHOT)
+		
+		if item.has("on_buy"):
+			item["on_buy"].call()
 		
 	else:
 		print("not enough %s" % seconds)
