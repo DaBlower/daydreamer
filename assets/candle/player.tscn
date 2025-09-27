@@ -66,3 +66,5 @@ texture_scale = 0.01
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_enabled = false
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
