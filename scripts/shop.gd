@@ -81,4 +81,3 @@ func _on_slide_finished(anim_name: String, slot: VBoxContainer):
 	
 	var anim_player: AnimationPlayer = slot.get_node("AnimationPlayer")
 	anim_player.play("fade_in")
-		
