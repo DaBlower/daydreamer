@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://b5vw2ldi2ubb7"]
+[gd_scene load_steps=6 format=4 uid="uid://b5vw2ldi2ubb7"]
 
 [ext_resource type="Texture2D" uid="uid://dr2suxyyo7xfj" path="res://assets/candle/background.png" id="1_x7wm1"]
 [ext_resource type="PackedScene" uid="uid://c1sm84swsnrmh" path="res://scenes/player.tscn" id="2_dv48e"]
+[ext_resource type="Script" uid="uid://c1lr2gs1ys6wo" path="res://scripts/player.gd" id="3_dv48e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x7wm1"]
 texture = ExtResource("1_x7wm1")
@@ -27,6 +28,7 @@ texture = ExtResource("1_x7wm1")
 
 [node name="Player" parent="." instance=ExtResource("2_dv48e")]
 position = Vector2(538, 326)
+script = ExtResource("3_dv48e")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 blend_mode = 1
