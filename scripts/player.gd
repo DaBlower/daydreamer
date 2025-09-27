@@ -2,9 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 600.0
 const JUMP_VELOCITY = -600.0
-@export var light_radius: float = 0.1
-var max_radius: float = 0.2
-var min_radius: float = 0.0
+@export var light_radius: float = 0.2
 
 @export var fade_speed: float = 0.005 # use smth different in the actual thing
 @onready var point_light_2d: PointLight2D = $PointLight2D
@@ -21,6 +19,7 @@ func _physics_process(delta: float) -> void:
 	# handle candle
 	if Input.is_action_just_pressed("increase_candle"):
 		light_radius += 0.5
+		GlobalTime.set_radius(light_radius)
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -33,8 +32,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	light_radius -= fade_speed * delta
-	light_radius = clamp(light_radius, min_radius, max_radius)
+	light_radius = GlobalTime.update_radius(delta)
 	point_light_2d.texture_scale = light_radius
 	
 	

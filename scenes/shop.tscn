@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bi0vv0ohx1igi"]
+[gd_scene load_steps=3 format=3 uid="uid://bi0vv0ohx1igi"]
 
 [ext_resource type="Texture2D" uid="uid://bnxfif5pa6cgr" path="res://icon.svg" id="1_lx5au"]
+[ext_resource type="Script" uid="uid://gkthh11lo5nw" path="res://scripts/shop.gd" id="1_xfvoa"]
 
 [node name="ShopUI" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xfvoa")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -17,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.0192678, 1.0035638)
+scale = Vector2(1.0179282, 1.0035638)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -39,6 +41,71 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("1_lx5au")
 
+[node name="Title" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fly!"
+horizontal_alignment = 1
+
+[node name="Spacer7" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer8" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer9" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer10" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer2" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Desc" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Gain the ability to fly for 10 seconds"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer4" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer3" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer5" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer6" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
 [node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "30 Seconds!"
@@ -59,6 +126,71 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("1_lx5au")
 
+[node name="Title" type="Label" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Fly!"
+horizontal_alignment = 1
+
+[node name="Spacer7" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer8" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer9" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer10" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer2" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Desc" type="Label" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Gain the ability to fly for 10 seconds"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer4" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer3" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer5" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer6" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
 [node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "30 Seconds!"
@@ -78,6 +210,71 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 texture = ExtResource("1_lx5au")
+
+[node name="Title" type="Label" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Fly!"
+horizontal_alignment = 1
+
+[node name="Spacer7" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer8" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer9" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer10" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer2" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Desc" type="Label" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Gain the ability to fly for 10 seconds"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer4" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer3" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer5" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer6" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
 
 [node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
