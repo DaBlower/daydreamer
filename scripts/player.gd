@@ -7,6 +7,12 @@ const JUMP_VELOCITY = -600.0
 @export var fade_speed: float = 0.005 # use smth different in the actual thing
 @onready var point_light_2d: PointLight2D = $PointLight2D
 
+var start_position: Vector2
+var distance: float = 0.0
+
+func _ready() -> void:
+	start_position = position
+
 func _physics_process(delta: float) -> void:
 	if !Global.get_game_status(): # true = paused, false = normal
 		# Add the gravity.
@@ -36,5 +42,9 @@ func _process(delta: float) -> void:
 	if !Global.get_game_status():
 		light_radius = GlobalTime.update_radius(delta)
 		point_light_2d.texture_scale = light_radius
+	
+	var delta_distance = position.distance_to(start_position) / 100.0 # px to metres
+	if delta_distance > 0.0:
+		Global.set_distance(delta_distance)
 	
 	
