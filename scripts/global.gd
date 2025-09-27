@@ -36,14 +36,19 @@ func set_high_jump_boost(naye: bool, time: int = -1): # naye is zsh lol but it j
 		time = randi_range(6,7)
 	print(time)
 	await get_tree().create_timer(time).timeout
+	jump_boost = -600.0
 	
-func set_norm_jump_boost(naye: bool):
+func set_norm_jump_boost(naye: bool, time: int = -1): # naye is zsh lol but it just is turn on or not
 	if naye:
 		jump_boost = -800.0
 	else:
 		jump_boost = -600.0
-		
-	await get_tree().create_timer(10).timeout
+	if time == -1:
+		time = randi_range(6,7)
+	print(time)
+	await get_tree().create_timer(time).timeout
+	jump_boost = -600.0
+	
 		
 func get_jump_boost():
 	return jump_boost
