@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 600.0
-const JUMP_VELOCITY = -600.0
+var JUMP_VELOCITY = -600.0
 @export var light_radius: float = 0.2
 
 @export var fade_speed: float = 0.005 # use smth different in the actual thing
@@ -12,9 +12,13 @@ var distance: float = 0.0
 
 func _ready() -> void:
 	start_position = position
+	Global.set_jump_boost(JUMP_VELOCITY)
 
 func _physics_process(delta: float) -> void:
 	if !Global.get_game_status(): # true = paused, false = normal
+		if Input.is_action_just_pressed("jump_boost"):
+			Global.set_norm_jump_boost(true)
+		JUMP_VELOCITY = Global.get_jump_boost()
 		# Add the gravity.
 		if not is_on_floor():
 			velocity += get_gravity() * delta
