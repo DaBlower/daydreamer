@@ -60,7 +60,12 @@ func _ready() -> void:
 	Global.connect(\"distance_changed\", Callable(self, \"_on_distance_changed\")) # call the _on_distance_changed func on self (the current script aka this one)
 	
 func _on_distance_changed(new_distance: float):
-	text = str(int(new_distance)) + \" metres\"
+	var measurement = \"\"
+	if int(new_distance) == 1:
+		measurement = \" metre\"
+	else:
+		measurement = \" metres\"
+	text = str(int(new_distance)) + measurement
 "
 
 [node name="ShopTest" type="Node2D"]
