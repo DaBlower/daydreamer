@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 600.0
 const JUMP_VELOCITY = -600.0
-var light_radius: float = 0.1
+@export var light_radius: float = 0.1
 var max_radius: float = 0.2
 var min_radius: float = 0.0
 
