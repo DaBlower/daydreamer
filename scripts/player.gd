@@ -6,7 +6,7 @@ var light_radius: float = 0.1
 var max_radius: float = 0.2
 var min_radius: float = 0.0
 
-@export var fade_speed: float = 0.005
+@export var fade_speed: float = 0.005 # use smth different in the actual thing
 @onready var point_light_2d: PointLight2D = $PointLight2D
 
 func _physics_process(delta: float) -> void:
