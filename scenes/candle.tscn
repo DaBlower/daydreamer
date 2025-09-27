@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c2gp1isfq216t"]
+[gd_scene load_steps=0 format=3 uid="uid://c2gp1isfq216t"]
 
 [node name="Shadow" type="Node2D"]
 
