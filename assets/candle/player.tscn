@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	if is_on_wall() and (Input.is_action_pressed(\"ui_left\") or Input.is_action_pressed(\"ui_right\")) and Input.is_action_pressed(\"ui_up\"):
-		velocity.x = -velocity.x
+		velocity.x = -velocity.x*1.5
 		disable_input(0.5)
 		
 	move_and_slide()
