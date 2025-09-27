@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c2gp1isfq216t"]
+
+[node name="Shadow" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.00030145794, 0, 0.14233801, 1)
