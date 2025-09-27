@@ -1,0 +1,381 @@
+[gd_scene load_steps=7 format=3 uid="uid://bi0vv0ohx1igi"]
+
+[ext_resource type="Texture2D" uid="uid://bnxfif5pa6cgr" path="res://icon.svg" id="1_lx5au"]
+[ext_resource type="Script" uid="uid://gkthh11lo5nw" path="res://scripts/shop.gd" id="1_xfvoa"]
+
+[sub_resource type="Animation" id="Animation_xfvoa"]
+resource_name = "fade_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1l46r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_032fp"]
+resource_name = "fade_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fc2m"]
+_data = {
+&"RESET": SubResource("Animation_1l46r"),
+&"fade_in": SubResource("Animation_032fp"),
+&"fade_out": SubResource("Animation_xfvoa")
+}
+
+[node name="ShopUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xfvoa")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0179282, 1.0035638)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.305
+anchor_right = 0.655
+anchor_bottom = 0.805
+offset_right = 392.0
+offset_bottom = 128.0
+
+[node name="Spacer3" type="Control" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_lx5au")
+
+[node name="Title" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fly!"
+horizontal_alignment = 1
+
+[node name="Spacer7" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer8" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer9" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer10" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer2" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Desc" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Gain the ability to fly for 10 seconds"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer4" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer3" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer5" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer6" type="Control" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "30 Seconds!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Buy!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/HBoxContainer/VBoxContainer"]
+libraries = {
+&"": SubResource("AnimationLibrary_2fc2m")
+}
+
+[node name="Spacer" type="Control" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("1_lx5au")
+
+[node name="Title" type="Label" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Fly!"
+horizontal_alignment = 1
+
+[node name="Spacer7" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer8" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer9" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer10" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer2" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Desc" type="Label" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Gain the ability to fly for 10 seconds"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer4" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer3" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer5" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer6" type="Control" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "30 Seconds!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Buy!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/HBoxContainer/VBoxContainer2"]
+libraries = {
+&"": SubResource("AnimationLibrary_2fc2m")
+}
+
+[node name="Spacer2" type="Control" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("1_lx5au")
+
+[node name="Title" type="Label" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Fly!"
+horizontal_alignment = 1
+
+[node name="Spacer7" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer8" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer9" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer10" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer2" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Desc" type="Label" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Gain the ability to fly for 10 seconds"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer4" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer3" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer5" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Spacer6" type="Control" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.01
+
+[node name="Price" type="Label" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "30 Seconds!"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Buy!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/HBoxContainer/VBoxContainer3"]
+libraries = {
+&"": SubResource("AnimationLibrary_2fc2m")
+}
+
+[node name="Spacer4" type="Control" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -186.5
+offset_right = 186.5
+offset_bottom = 128.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Time Shop!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Here shalt thou spend the remainder of thy life"
+horizontal_alignment = 1
