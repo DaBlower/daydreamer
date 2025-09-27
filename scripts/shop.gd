@@ -4,31 +4,31 @@ extends Control
 var items = [
 	{
 		"name": "Fly!1",
-		"desc": "a",
+		"desc": "Gain the ability to fly for 10 seconds",
 		"price": 50,
 		"icon": preload("res://icon.svg")
 	},
 	{
 		"name": "Fly!2",
-		"desc": "b",
+		"desc": "Gain the ability to fly for 10 seconds",
 		"price": 50,
 		"icon": preload("res://icon.svg")
 	},
 	{
 		"name": "Fly!3",
-		"desc": "c",
+		"desc": "Gain the ability to fly for 10 seconds",
 		"price": 50,
 		"icon": preload("res://icon.svg")
 	},
 	{
 		"name": "Fly!4",
-		"desc": "d",
+		"desc": "Gain the ability to fly for 10 seconds",
 		"price": 50,
 		"icon": preload("res://icon.svg")
 	},
 	{
 		"name": "Fly!5",
-		"desc": "e",
+		"desc": "Gain the ability to fly for 10 seconds",
 		"price": 50,
 		"icon": preload("res://icon.svg")
 	},
@@ -65,7 +65,20 @@ func _on_buy_pressed(slot: VBoxContainer, item: Dictionary) -> void:
 		GlobalTime.subtract_time(price)
 		print("Bought %s" % item["name"])
 		
+		var anim_player: AnimationPlayer = slot.get_node("AnimationPlayer")
+		anim_player.play("fade_out")
+		anim_player.animation_finished.connect(_on_slide_finished.bind(slot), CONNECT_ONE_SHOT)
+		
 		
 	else:
 		print("not enough %s" % seconds)
+		
+func _on_slide_finished(anim_name: String, slot: VBoxContainer):
+	if anim_name != "fade_out":
+		return
+	
+	assign_item_to_slot(slot)
+	
+	var anim_player: AnimationPlayer = slot.get_node("AnimationPlayer")
+	anim_player.play("fade_in")
 		
