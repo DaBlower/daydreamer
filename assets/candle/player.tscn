@@ -63,3 +63,9 @@ shape = SubResource("RectangleShape2D_qhqgy")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = ExtResource("2_k5rr8")
 texture_scale = 0.01
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2, -1)
+limit_left = 0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
