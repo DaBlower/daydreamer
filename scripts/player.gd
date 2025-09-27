@@ -17,7 +17,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if !Global.get_game_status(): # true = paused, false = normal
 		if Input.is_action_just_pressed("jump_boost"):
-			Global.set_norm_jump_boost(true)
+			Global.set_high_jump_boost(true)
 		JUMP_VELOCITY = Global.get_jump_boost()
 		# Add the gravity.
 		if not is_on_floor():

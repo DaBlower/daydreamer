@@ -27,17 +27,23 @@ func set_distance(metres: float):
 func set_jump_boost(strength: float):
 	jump_boost = strength
 
-func set_high_jump_boost(naye: bool): # naye is zsh lol but it just is turn on or not
+func set_high_jump_boost(naye: bool, time: int = -1): # naye is zsh lol but it just is turn on or not
 	if naye:
 		jump_boost = -1600.0
 	else:
 		jump_boost = -600.0
-
+	if time == -1:
+		time = randi_range(6,7)
+	print(time)
+	await get_tree().create_timer(time).timeout
+	
 func set_norm_jump_boost(naye: bool):
 	if naye:
 		jump_boost = -800.0
 	else:
 		jump_boost = -600.0
+		
+	await get_tree().create_timer(10).timeout
 		
 func get_jump_boost():
 	return jump_boost
