@@ -69,9 +69,11 @@ func _on_buy_pressed(slot: VBoxContainer, item: Dictionary) -> void:
 		anim_player.play("fade_out")
 		anim_player.animation_finished.connect(_on_slide_finished.bind(slot), CONNECT_ONE_SHOT)
 		
-		
 	else:
 		print("not enough %s" % seconds)
+		slot.get_node("Price").text = "Not enough time"
+		await get_tree().create_timer(1.0).timeout
+		slot.get_node("Price").text = str(price)
 		
 func _on_slide_finished(anim_name: String, slot: VBoxContainer):
 	if anim_name != "fade_out":
