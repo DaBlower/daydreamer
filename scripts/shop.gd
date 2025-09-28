@@ -3,17 +3,17 @@ extends Control
 
 var items = [
 	{
-		"name": "Fly!1",
+		"name": "Fly!",
 		"desc": "Gain the ability to fly for 10 seconds",
-		"price": 50,
-		"icon": preload("res://icon.svg")
+		"price": 30,
+		"icon": preload("res://assets/Fly.png")
 	},
 	{
 		"name": "Jump Potion",
 		"desc": "Jump higher for 30 seconds!",
 		"price": 67,
 		"on_buy": Callable(Global, "set_norm_jump_boost").bind(true, 30),
-		"icon": preload("res://icon.svg")
+		"icon": preload("res://assets/speed_potion.png")
 	},
 	{
 		"name": "Fly!3",
@@ -45,10 +45,15 @@ func _ready() -> void:
 func assign_item_to_slot(slot: VBoxContainer):
 	var item = items.pick_random()
 	
-	slot.get_node("TextureRect").texture = item["icon"]
 	slot.get_node("Title").text = item["name"]
 	slot.get_node("Desc").text = item["desc"]
 	slot.get_node("Price").text = str(item["price"])
+	
+	var tex_rect: TextureRect = slot.get_node("TextureRect")
+	tex_rect.texture = item["icon"]
+	tex_rect.custom_minimum_size = Vector2(128,128)
+	tex_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	tex_rect.expand = true
 	
 	# connect button
 	var buy_button = slot.get_node("Button")
