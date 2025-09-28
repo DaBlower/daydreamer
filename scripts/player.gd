@@ -90,6 +90,8 @@ func _physics_process(delta: float) -> void:
 			var collision = get_slide_collision(i)
 			if collision.get_collider().is_in_group("Kill"):
 				die()
+			if collision.get_collider().is_in_group("Finish"):
+				print("finish")
 
 func die() -> void:
 	position = Vector2(167, 470)
