@@ -30,7 +30,7 @@ var items = [
 	},
 	{
 		"name": "Dash (permanent)",
-		"desc": "Gain the ability to fly forever",
+		"desc": "Gain the ability to dash forever",
 		"price": 180,
 		"on_buy": Callable(Global, "set_dashing").bind(true),
 		"icon": preload("res://assets/speed_running_man.png")
