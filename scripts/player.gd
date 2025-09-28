@@ -41,9 +41,14 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = move_toward(velocity.x, 0, SPEED)
 
-		if is_on_wall() and (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right")) and Input.is_action_pressed("ui_up"):
-			velocity.x = -velocity.x*1.5
-			disable_input(0.5)
+		if is_on_wall() and Input.is_action_pressed("ui_up"):
+			var collision = get_last_slide_collision()
+			if collision:
+				var normal = collision.get_normal()
+				if normal.x != 0:
+					velocity.x = normal.x * SPEED * 1.5
+					velocity.y = -200
+					disable_input(0.5)
 			
 		move_and_slide()
 		
