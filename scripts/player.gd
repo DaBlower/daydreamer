@@ -60,7 +60,10 @@ func _physics_process(delta: float) -> void:
 				velocity.x = direction * SPEED
 			else:
 				velocity.x = move_toward(velocity.x, 0, SPEED)
-			
+		
+		if is_on_wall():
+			input_enabled = true
+		
 		if is_on_wall() and Input.is_action_pressed("jump") and (Input.is_action_pressed("left") or Input.is_action_pressed("right")):
 			disable_input(0.5)
 			velocity.x = 500 * get_wall_normal().x
