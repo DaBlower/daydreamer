@@ -24,6 +24,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if !Global.get_game_status(): # pause for shop
+		JUMP_VELOCITY = Global.get_jump_boost()
 		# Add the gravity.
 		if not is_on_floor():
 			velocity += get_gravity() * delta
