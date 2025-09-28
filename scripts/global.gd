@@ -5,6 +5,7 @@ var distance: float = 0.0 # the players distance
 var jump_boost: float = 0.0 # for shop item (not much boost) and enemy punishment (alot of boost)
 var elapsed_time: float = 0.0
 var dashing_enabled: bool = false
+var can_fly: bool = false
 
 signal distance_changed(new_distance: float)
 
@@ -13,6 +14,8 @@ func reset():
 	distance = 0.0 # the players distance
 	jump_boost = 0.0 # for shop item (not much boost) and enemy punishment (alot of boost)
 	elapsed_time = 0.0
+	dashing_enabled = false
+	can_fly = false
 
 func toggle_game_status(status: bool):
 	paused = status
@@ -78,3 +81,10 @@ func set_norm_jump_boost(naye: bool, time: int = -1): # naye is zsh lol but it j
 		
 func get_jump_boost():
 	return jump_boost
+
+
+func set_fly(naye: bool):
+	can_fly = naye
+	
+func get_fly():
+	return can_fly
