@@ -10,7 +10,7 @@ size = Vector2(44, 87)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qhqgy")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -22,3 +22,12 @@ texture = ExtResource("2_k5rr8")
 texture_scale = 0.01
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="dashTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="dashCooldown" type="Timer" parent="."]
+wait_time = 0.15
+
+[connection signal="timeout" from="dashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dashCooldown" to="." method="_on_dash_cooldown_timeout"]

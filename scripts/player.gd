@@ -5,6 +5,11 @@ var JUMP_VELOCITY: float = -600.0
 var input_enabled: bool = true
 var elapsed_time: float = 0.0
 
+var dashing = false
+var canDash = true
+
+var dir = 1 # declaring early bc dashing breaks
+
 @export var light_radius: float = 0.2
 
 @export var fade_speed: float = 0.005 # use smth different in the actual thing
@@ -19,6 +24,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if !Global.get_game_status(): # pause for shop
+		JUMP_VELOCITY = Global.get_jump_boost()
 		# Add the gravity.
 		if not is_on_floor():
 			velocity += get_gravity() * delta
@@ -32,10 +38,11 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("increase_candle"):
 			light_radius += 0.5
 		
+		var direction = Input.get_axis("left", "right") # set direction for dash
+		
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		if input_enabled:
-			var direction := Input.get_axis("left", "right")
 			if direction:
 				velocity.x = direction * SPEED
 			else:
@@ -45,6 +52,25 @@ func _physics_process(delta: float) -> void:
 			disable_input(0.5)
 			velocity.x = 500 * get_wall_normal().x
 					
+		if direction and input_enabled:
+			velocity.x = direction * SPEED
+			dir = direction
+
+		if not dashing:
+			$sprite.scale.x = lerp($sprite.scale.x, 1.0, 0.2)
+			$sprite.scale.y = lerp($sprite.scale.y, 1.0, 0.2)
+			
+		if dashing:
+			velocity.x = dir*3000
+			$sprite.scale.x = 1.5
+			$sprite.scale.y = 0.8
+			
+		if Input.is_action_just_pressed("dash") and canDash and input_enabled and Global.check_dashing():
+			dashing = true
+			canDash = false
+			$dashTimer.start()
+			$dashCooldown.start()
+			
 		move_and_slide()
 		
 
@@ -71,4 +97,10 @@ func _process(delta: float) -> void:
 		await get_tree().create_timer(2).timeout
 		get_tree().change_scene_to_file("res://scenes/end_screen.tscn")
 	
-	
+
+func _on_dash_timer_timeout() -> void:
+	canDash = true
+
+func _on_dash_cooldown_timeout() -> void:
+	dashing = false
+	$sprite.scale = Vector2(1.0,1.0)

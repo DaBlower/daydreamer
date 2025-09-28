@@ -22,16 +22,18 @@ var items = [
 		"icon": preload("res://icon.svg")
 	},
 	{
-		"name": "Fly!4",
-		"desc": "Gain the ability to fly for 10 seconds",
-		"price": 50,
-		"icon": preload("res://icon.svg")
+		"name": "Dash (limited)",
+		"desc": "Gain the ability to dash for 1 minute",
+		"price": 60,
+		"on_buy": Callable(Global, "set_dashing").bind(true, 60),
+		"icon": preload("res://assets/speed_running_man.png")
 	},
 	{
-		"name": "Fly!5",
-		"desc": "Gain the ability to fly for 10 seconds",
-		"price": 50,
-		"icon": preload("res://icon.svg")
+		"name": "Dash (permanent)",
+		"desc": "Gain the ability to dash forever",
+		"price": 180,
+		"on_buy": Callable(Global, "set_dashing").bind(true),
+		"icon": preload("res://assets/speed_running_man.png")
 	},
 ]
 
