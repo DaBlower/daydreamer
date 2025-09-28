@@ -10,7 +10,7 @@ signal time_changed(new_time: float)
 
 func reset():
 	size_rate = 1500
-	duration = 10.0 # seconds to go from 0.2 to 0
+	duration = 167.0 # seconds to go from 0.2 to 0
 	current_radius = 0.2
 	max_radius = 0.2
 	min_radius = 0.0

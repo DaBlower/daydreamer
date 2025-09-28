@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
 const SPEED: float = 300.0
-var JUMP_VELOCITY: float = -600.0
+var JUMP_VELOCITY: float = -800.0
 var input_enabled: bool = true
 var elapsed_time: float = 0.0
+var FLY_SPEED := 200
 
 var dashing = false
 var canDash = true
@@ -26,14 +27,26 @@ func _physics_process(delta: float) -> void:
 	if !Global.get_game_status(): # pause for shop
 		JUMP_VELOCITY = Global.get_jump_boost()
 		# Add the gravity.
-		if not is_on_floor():
+		if not is_on_floor() and not Global.get_fly():
 			velocity += get_gravity() * delta
 
 		# Handle jump.
-		if Input.is_action_pressed("jump"):
+		if Global.get_fly():
+			var fly_dir := 0
+			if Input.is_action_pressed("jump"):
+				fly_dir -= 1
+			if Input.is_action_pressed("go_down"):
+				fly_dir += 1
+				
+			velocity.y = fly_dir * FLY_SPEED
+		else:
+			if not is_on_floor():
+				velocity += get_gravity() * delta
+				
 			if is_on_floor() or (is_on_wall() and (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"))):
-				velocity.y = JUMP_VELOCITY
-			
+				if Input.is_action_pressed("jump"):
+					velocity.y = JUMP_VELOCITY
+	
 		# handle candle
 		if Input.is_action_just_pressed("increase_candle"):
 			light_radius += 0.5
