@@ -74,11 +74,15 @@ func _physics_process(delta: float) -> void:
 		
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
+			
+			if not collision:
+				continue
+			
 			if collision.get_collider().is_in_group("Kill"):
 				die()
 
 func die() -> void:
-	position = Vector2(67, 440)
+	position = Vector2(167, 470)
 
 func disable_input(duration: float) -> void:
 	input_enabled = false
