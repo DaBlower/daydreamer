@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1sm84swsnrmh"]
+[gd_scene load_steps=5 format=3 uid="uid://qd76wmf7btbo"]
 
 [ext_resource type="Script" uid="uid://xipiqpbvtrva" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://dfyiy4bw0shpk" path="res://assets/candle/gradient.png" id="2_k5rr8"]
