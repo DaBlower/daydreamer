@@ -3,6 +3,7 @@ extends Node
 var paused: bool = false # used to pause the game when on the shop menu
 var distance: float = 0.0 # the players distance
 var jump_boost: float = 0.0 # for shop item (not much boost) and enemy punishment (alot of boost)
+var elapsed_time: float = 0.0
 
 signal distance_changed(new_distance: float)
 
@@ -23,7 +24,16 @@ func add_distance(metres: float):
 func set_distance(metres: float):
 	distance = metres
 	emit_signal("distance_changed", distance)
+	
+func get_distance():
+	return distance
 
+func set_elapsed_time(time: float):
+	elapsed_time = time
+	
+func get_elapsed_time():
+	return elapsed_time
+	
 func set_jump_boost(strength: float):
 	jump_boost = strength
 
