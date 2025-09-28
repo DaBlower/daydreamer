@@ -3,8 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://qd76wmf7btbo" path="res://scenes/player.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bnbqv6lmkhu5o" path="res://scenes/platforms1.tscn" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://cinl1cspu5ldu" path="res://assets/background_layerone.png" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://coirs758f5gsv" path="res://scenes/time_orb_thingy.tscn" id="4_jyhfs"]
-[ext_resource type="Texture2D" uid="uid://144ow6fdid1j" path="res://assets/portal.png" id="5_tbgi4"]
+[ext_resource type="PackedScene" path="res://scenes/time_orb_thingy.tscn" id="4_jyhfs"]
 
 [sub_resource type="GDScript" id="GDScript_jyhfs"]
 script/source = "extends Node2D

@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://dslkih5tmcq6v"]
+
+[sub_resource type="GDScript" id="GDScript_pddrx"]
+script/source = "extends Control
+
+@onready var panel: Panel = $Panel
+
+func _on_restart_pressed() -> void:
+	GlobalTime.reset()
+	Global.reset()
+	get_tree().change_scene_to_file(\"res://scenes/main.tscn\")
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pddrx"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_pddrx")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pddrx")
+
+[node name="GameOver" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -201.0
+offset_top = 66.0
+offset_right = 201.0
+offset_bottom = 154.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Kindle"
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 333.0
+offset_top = 470.0
+offset_right = 453.0
+offset_bottom = 523.0
+theme_override_font_sizes/font_size = 32
+text = "Start"
+
+[node name="Quit" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 669.0
+offset_top = 469.0
+offset_right = 744.0
+offset_bottom = 522.0
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="pressed" from="Panel/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Panel/Quit" to="." method="_on_quit_pressed"]

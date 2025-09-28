@@ -91,7 +91,7 @@ func _physics_process(delta: float) -> void:
 			if collision.get_collider().is_in_group("Kill"):
 				die()
 			if collision.get_collider().is_in_group("Finish"):
-				print("finish")
+				get_tree().change_scene_to_file("res://scenes/finish_screen.tscn")
 
 func die() -> void:
 	position = Vector2(167, 470)
