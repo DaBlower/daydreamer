@@ -1,7 +1,7 @@
 extends Node
 
 @export var size_rate: float = 1500
-@export var duration: float = 10.0 # seconds to go from 0.2 to 0
+@export var duration: float = 167.0 # seconds to go from 0.2 to 0
 @export var current_radius: float = 0.2
 var max_radius: float = 0.2
 var min_radius: float = 0.0

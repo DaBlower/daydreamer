@@ -4,6 +4,7 @@ var paused: bool = false # used to pause the game when on the shop menu
 var distance: float = 0.0 # the players distance
 var jump_boost: float = 0.0 # for shop item (not much boost) and enemy punishment (alot of boost)
 var elapsed_time: float = 0.0
+var dashing_enabled: bool = false
 
 signal distance_changed(new_distance: float)
 
@@ -15,6 +16,17 @@ func reset():
 
 func toggle_game_status(status: bool):
 	paused = status
+	
+func toggle_dashing():
+	dashing_enabled = !dashing_enabled
+	
+func set_dashing(dash: bool, timeout: int = -1):
+	dashing_enabled = dash
+	if timeout != -1:
+		await get_tree().create_timer(timeout).timeout
+	
+func check_dashing():
+	return dashing_enabled
 	
 func get_game_status():
 	return paused
