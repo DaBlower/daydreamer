@@ -1,21 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1sm84swsnrmh"]
 
 [ext_resource type="Script" uid="uid://xipiqpbvtrva" path="res://scripts/player.gd" id="1_qhqgy"]
-[ext_resource type="Texture2D" uid="uid://bnxfif5pa6cgr" path="res://icon.svg" id="1_xrxa3"]
 [ext_resource type="Texture2D" uid="uid://dfyiy4bw0shpk" path="res://assets/candle/gradient.png" id="2_k5rr8"]
+[ext_resource type="Texture2D" uid="uid://bhrd8duiw703t" path="res://assets/player.png" id="2_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(128, 128)
+size = Vector2(44, 87)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qhqgy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_xrxa3")
+texture = ExtResource("2_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = ExtResource("2_k5rr8")
 texture_scale = 0.01
+
+[node name="Camera2D" type="Camera2D" parent="."]
