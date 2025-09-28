@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED: float = 300.0
 var JUMP_VELOCITY: float = -600.0
 var input_enabled: bool = true
+var elapsed_time: float = 0.0
 
 @export var light_radius: float = 0.2
 
@@ -60,6 +61,8 @@ func disable_input(duration: float) -> void:
 	input_enabled = true
 
 func _process(delta: float) -> void:
+	elapsed_time += delta
+	Global.set_elapsed_time(elapsed_time)
 	if !Global.get_game_status():
 		light_radius = GlobalTime.update_radius(delta)
 		point_light_2d.texture_scale = light_radius
@@ -67,5 +70,9 @@ func _process(delta: float) -> void:
 	var delta_distance = position.distance_to(start_position) / 100.0 # px to metres
 	if delta_distance > 0.0:
 		Global.set_distance(delta_distance)
+		
+	if GlobalTime.get_time() <= 0.0:
+		await get_tree().create_timer(2).timeout
+		get_tree().change_scene_to_file("res://scenes/end_screen.tscn")
 	
 	
