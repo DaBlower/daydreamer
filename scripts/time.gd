@@ -8,6 +8,13 @@ var min_radius: float = 0.0
  
 signal time_changed(new_time: float)
 
+func reset():
+	size_rate = 1500
+	duration = 10.0 # seconds to go from 0.2 to 0
+	current_radius = 0.2
+	max_radius = 0.2
+	min_radius = 0.0
+
 func get_time() -> float:
 	# remaining time proportional to distance between min and max
 	return (current_radius - min_radius) / (max_radius - min_radius) * duration
@@ -15,13 +22,13 @@ func subtract_time(time: float):
 	# subtracts time directly from current_radius
 	var ratio = time / duration
 	current_radius -= (max_radius - min_radius) * ratio
-	current_radius = clamp(current_radius, min_radius, max_radius)
+	current_radius = clamp(current_radius, min_radius, 1)
 	emit_signal("time_changed", get_time())
 	
 func update_radius(delta: float):
 	# reduce radius every second
 	current_radius -= (max_radius - min_radius) / duration * delta
-	current_radius = clamp(current_radius, min_radius, max_radius)
+	current_radius = clamp(current_radius, min_radius, 1)
 	emit_signal("time_changed", get_time())
 	return current_radius
 	
@@ -29,5 +36,5 @@ func get_radius() -> float:
 	return current_radius
 	
 func set_radius(radius: float) -> void:
-	current_radius = clamp(radius, min_radius, max_radius)
+	current_radius = clamp(radius, min_radius, 1)
 	emit_signal("time_changed", get_time())
