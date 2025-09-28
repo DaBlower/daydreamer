@@ -83,8 +83,11 @@ func get_jump_boost():
 	return jump_boost
 
 
-func set_fly(naye: bool):
+func set_fly(naye: bool, time: int = -1):
 	can_fly = naye
+	if time != -1:
+		await get_tree().create_timer(time).timeout
+		can_fly = false
 	
 func get_fly():
 	return can_fly

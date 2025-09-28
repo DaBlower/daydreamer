@@ -4,8 +4,8 @@ extends Control
 var items = [
 	{
 		"name": "Fly!",
-		"desc": "Gain the ability to fly for 10 seconds",
-		"on_buy": Callable(Global, "set_fly").bind(true),
+		"desc": "Gain the ability to fly for 20 seconds",
+		"on_buy": Callable(Global, "set_fly").bind(true, 20),
 		"price": 30,
 		"icon": preload("res://assets/Fly.png")
 	},
