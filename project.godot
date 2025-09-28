@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="daydreamer"
-run/main_scene="uid://dslkih5tmcq6v"
+run/main_scene="uid://d1bjqnp1ql382"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -76,6 +76,13 @@ go_down={
 ]
 }
 
+[physics]
+
+2d/default_gravity=1300.0
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_s3tc_bptc=true
