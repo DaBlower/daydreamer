@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://coirs758f5gsv"]
+
+[ext_resource type="Texture2D" uid="uid://1cyve43cnqik" path="res://assets/Reward_clock.png" id="1_tedrt"]
+
+[sub_resource type="GDScript" id="GDScript_tedrt"]
+script/source = "extends Area2D
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == \"Player\":
+		GlobalTime.subtract_time(-10)
+		self.queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fip8w"]
+size = Vector2(29, 38)
+
+[sub_resource type="Animation" id="Animation_0k8fh"]
+resource_name = "swingy"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, 5), Vector2(0, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_o21md"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1pxm8"]
+_data = {
+&"RESET": SubResource("Animation_o21md"),
+&"swingy": SubResource("Animation_0k8fh")
+}
+
+[node name="TimeOrbThingy" type="Area2D"]
+scale = Vector2(2, 2)
+script = SubResource("GDScript_tedrt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("1_tedrt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_fip8w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1pxm8")
+}
+autoplay = "swingy"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
