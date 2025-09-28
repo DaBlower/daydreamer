@@ -60,11 +60,11 @@ func _physics_process(delta: float) -> void:
 				velocity.x = direction * SPEED
 			else:
 				velocity.x = move_toward(velocity.x, 0, SPEED)
-
-		if is_on_wall() and (Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right")) and Input.is_action_pressed("ui_up"):
-			velocity.x = -velocity.x*1.5
-			disable_input(0.5)
 			
+		if is_on_wall() and Input.is_action_pressed("jump") and (Input.is_action_pressed("left") or Input.is_action_pressed("right")):
+			disable_input(0.5)
+			velocity.x = 500 * get_wall_normal().x
+					
 		if direction and input_enabled:
 			velocity.x = direction * SPEED
 			dir = direction
@@ -86,14 +86,6 @@ func _physics_process(delta: float) -> void:
 			
 		move_and_slide()
 		
-		for i in get_slide_collision_count():
-			var collision = get_slide_collision(i)
-			
-			if not collision:
-				continue
-			
-			if collision.get_collider().is_in_group("Kill"):
-				die()
 
 func die() -> void:
 	position = Vector2(167, 470)

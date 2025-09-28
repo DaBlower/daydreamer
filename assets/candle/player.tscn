@@ -78,22 +78,24 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(128, 128)
+size = Vector2(141, 128)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 255
 script = SubResource("GDScript_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2.0000014, 18.499998)
-scale = Vector2(2.0399997, 3.11)
+position = Vector2(0.4999957, 14.949997)
+scale = Vector2(3.159091, 3.19875)
 texture = ExtResource("1_xrxa3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
 scale = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(2, -78)
 texture = ExtResource("2_k5rr8")
 texture_scale = 0.01
 
